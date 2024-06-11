@@ -5,6 +5,10 @@ const SPOTIFY_CLIENT_SECRET = "161fc5e3df004b95af3ba8c62f3eaf54";
 const PLAYLIST_ID = "5PsJRJZ4Ia7bjiY8EbieLd?si=0cbf8571fb38462a";
 const container = document.querySelector('div[data-js="tracks"]');
 
+// Variable for Playlist Name
+
+const playlistTitle = document.querySelector('h1[data-js="playlistName"]');
+
 //Get playlist from Spotify
 
 function fetchPlaylist(token, playlistId) {
@@ -24,6 +28,10 @@ function fetchPlaylist(token, playlistId) {
     })
     .then((data) => {
       console.log(data);
+
+      if (playlistTitle && data.name) {
+        playlistTitle.textContent = data.name;
+      }
 
       if (data.tracks && data.tracks.items) {
         data.tracks.items.forEach((item) => {
