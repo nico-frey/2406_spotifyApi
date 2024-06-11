@@ -23,10 +23,13 @@
   color: #798E90;
 }
 
+body {
+  background-color: #FAFCFC;
+}
+
 #main {
   display: flex;
   justify-content: center;
-  background-color: #FAFCFC;
 }
 
 .playlist {
@@ -52,13 +55,15 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 0.25rem;
 }
 .tracklist ul li {
   display: flex;
-  padding: 0.75rem;
+  padding: 0.5rem;
   align-items: center;
   align-self: stretch;
-  border-radius: 1.25rem;
+  border-radius: 1rem;
+  cursor: pointer;
 }
 .tracklist ul li:hover {
   background: linear-gradient(90deg, #EEF3F7 -0.92%, #FAFCFC 100%);
@@ -70,7 +75,7 @@
 }
 .tracklist ul li .trackInfo {
   margin-left: 1.5rem;
-  width: 100%;
+  width: 50%;
 }
 .tracklist ul li p:nth-child(1) {
   color: #03191B;
@@ -79,9 +84,8 @@
   padding-bottom: 0.25rem;
 }
 .tracklist ul li p:nth-child(3), .tracklist ul li p:nth-child(4) {
-  width: 100%;
+  width: 25%;
   max-width: 25rem;
-  text-align: right;
 }
 
 /*# sourceMappingURL=styles.css.map */
