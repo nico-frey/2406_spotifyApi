@@ -1,5 +1,7 @@
 const SPOTIFY_CLIENT_ID = "67b411e20d594f30bf7a8d3bbde54285";
 const SPOTIFY_CLIENT_SECRET = "161fc5e3df004b95af3ba8c62f3eaf54";
+
+// Add custom playlist
 const PLAYLIST_ID = "5PsJRJZ4Ia7bjiY8EbieLd?si=0cbf8571fb38462a";
 const container = document.querySelector('div[data-js="tracks"]');
 
@@ -36,7 +38,7 @@ function fetchPlaylist(token, playlistId) {
     });
 }
 
-//Add tracks to HTML
+//Add items to the HTML
 
 function addTracksToPage(items) {
   if (!container) {
@@ -64,6 +66,10 @@ function addTracksToPage(items) {
     const seconds = ((durationMs % 60000) / 1000).toFixed(0);
     //console.log("track duration:", durationMs);
 
+    // Get Album name from Track obj
+
+    const albumName = item.track.album.name;
+
     // Add items to innerHTML
 
     li.innerHTML = `
@@ -71,7 +77,8 @@ function addTracksToPage(items) {
     <p class="artistName">${item.track.artists
       .map((artist) => artist.name)
       .join(", ")}</p>
-    <p>${minutes}:${seconds < 10 ? "0" : ""}${seconds}</p>
+    <p class="trackDuration">${minutes}:${seconds < 10 ? "0" : ""}${seconds}</p>
+    <p class="albumName">${albumName}</p>
     ${coverImage ? `<img src="${coverImage}" class="coverImage" >` : ""}
   `;
 
