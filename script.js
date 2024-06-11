@@ -8,7 +8,7 @@ const container = document.querySelector('div[data-js="tracks"]');
 // Variable for Playlist Name & Author
 
 const playlistTitle = document.querySelector('h1[data-js="playlistName"]');
-const playlistAuthor = document.querySelector('h1[data-js="playlistAuthor"]');
+const playlistAuthor = document.querySelector('h2[data-js="playlistAuthor"]');
 
 //Get playlist from Spotify
 
