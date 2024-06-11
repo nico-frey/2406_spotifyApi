@@ -86,13 +86,13 @@ function addTracksToPage(items) {
     // Add items to innerHTML
 
     li.innerHTML = `
-    <p class="trackName">${item.track.name}</p>  
+        ${coverImage ? `<img src="${coverImage}" class="coverImage" >` : ""}
+    <div class="trackInfo"> <p class="trackName">${item.track.name}</p>  
     <p class="artistName">${item.track.artists
       .map((artist) => artist.name)
-      .join(", ")}</p>
+      .join(", ")}</p> </div>
     <p class="trackDuration">${minutes}:${seconds < 10 ? "0" : ""}${seconds}</p>
     <p class="albumName">${albumName}</p>
-    ${coverImage ? `<img src="${coverImage}" class="coverImage" >` : ""}
   `;
 
     ul.appendChild(li);

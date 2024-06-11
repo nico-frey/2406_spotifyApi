@@ -1,9 +1,87 @@
-.album {
-  display: inline-block;
-  padding-right: 1em;
+* {
+  font-family: "Cabinet Grotesk Variable", sans-serif;
+  font-size: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+* h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #03191B;
+}
+* h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #3F5558;
+}
+* p {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #798E90;
 }
 
-img {
-  width: 50px;
-  height: 50px;
+#main {
+  display: flex;
+  justify-content: center;
+  background-color: #FAFCFC;
 }
+
+.playlist {
+  width: 100%;
+  max-width: 75rem;
+}
+
+.playlistHeader {
+  display: flex;
+  padding: 2rem 0rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tracklist {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.tracklist ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.tracklist ul li {
+  display: flex;
+  padding: 0.75rem;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 1.25rem;
+}
+.tracklist ul li:hover {
+  background: linear-gradient(90deg, #EEF3F7 -0.92%, #FAFCFC 100%);
+}
+.tracklist ul li img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.5rem;
+}
+.tracklist ul li .trackInfo {
+  margin-left: 1.5rem;
+  width: 100%;
+}
+.tracklist ul li p:nth-child(1) {
+  color: #03191B;
+  font-size: 1.375rem;
+  font-weight: 500;
+  padding-bottom: 0.25rem;
+}
+.tracklist ul li p:nth-child(3), .tracklist ul li p:nth-child(4) {
+  width: 100%;
+  max-width: 25rem;
+  text-align: right;
+}
+
+/*# sourceMappingURL=styles.css.map */
