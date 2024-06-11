@@ -1,5 +1,4 @@
-h1 {
-    color: blue;
-    font-family: Arial, sans-serif;
-  }
-  
+.album {
+  display: inline-block;
+  padding-right: 1em;
+}

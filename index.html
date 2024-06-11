@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Your HTML Page</title>
-      <link rel="stylesheet" type="text/css" href="styles.css" />
-    </head>
-    <body>
-      <h1>Hello, World!</h1>
-      <script src="script.js"></script>
-    </body>
-  </html>
-  
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Spotify Playlist</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="main">
+      <div class="playlist">
+        <h1>My playlist</h1>
+
+        <div data-js="tracks" class="tracklist">
+          <!-- here we are going to display the fetched tracks -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
