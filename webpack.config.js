@@ -20,7 +20,7 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: "index.html", to: "./dist/index.html" }, // Adjust the source and destination paths as needed
+        { from: "index.html", to: "./index.html" }, // Adjust the source and destination paths as needed
       ],
     }),
   ],

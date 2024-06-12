@@ -1,124 +1,116 @@
-// Typography
+// Variables
 $font: 'Cabinet Grotesk Variable', sans-serif;
-
-// Colors
 $textDefault: #03191B;
 $textLighter: #3F5558;
 $testLightest: #798E90;
 $background: #FAFCFC;
-
 $borderDefault: #BBE0E4;
-
 $gradientLeft: #EEF3F7;
 $gradientRight: $background;
-
 $radiusInner: 0.5rem;
 $radiusOuter: 1rem;
 
 * {
-    font-family: $font;
-    font-size: 16px;
-    list-style: none;
+  font-family: $font;
+  font-size: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
-    margin: 0;
-    padding: 0;
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-h1 {
+  h1 {
     font-size: 2rem;
     font-weight: 500;
     color: $textDefault;
-}
+  }
 
-h2 {
+  h2 {
     font-size: 1.5rem;
     font-weight: 500;
     color: $textLighter;
-}
+  }
 
-p {
+  p {
     font-size: 1.125rem;
     font-weight: 500;
     color: $testLightest;
+  }
 }
 
 body {
-    background-color: red;
+  background-color: $background;
 }
 
 #main {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .playlist {
-    width: 100%;
-    max-width: 75rem;
+  width: 100%;
+  max-width: 75rem;
 }
 
 .playlistHeader {
-    display: flex;
-    padding: 2rem 0rem;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  padding: 2rem 0;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .tracklist {
-    display: flex;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+
+  ul {
     width: 100%;
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+    gap: 0.25rem;
 
-    ul {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
+    li {
+      display: flex;
+      padding: 0.5rem;
+      align-items: center;
+      align-self: stretch;
+      border-radius: $radiusOuter;
+      cursor: pointer;
 
-        li {
-            display: flex;
-            padding: 0.5rem;
-            align-items: center;
-            align-self: stretch;
-            border-radius: $radiusOuter;
-            cursor: pointer;
+      &:hover {
+        background: linear-gradient(90deg, $gradientLeft -0.92%, $gradientRight 100%);
+      }
 
-            &:hover {
-                background: linear-gradient(90deg, $gradientLeft -0.92%, $gradientRight 100%);
-            }
+      img {
+        width: 4rem;
+        height: 4rem;
+        border-radius: $radiusInner;
+      }
 
-            img {
-                width: 4rem;
-                height: 4rem;
-                border-radius: $radiusInner;
-            }
+      .trackInfo {
+        margin-left: 1.5rem;
+        width: 50%;
+      }
 
-            .trackInfo {
-                margin-left: 1.5rem;
-                width: 50%;
-            }
+      p:nth-child(1) {
+        color: $textDefault;
+        font-size: 1.375rem;
+        font-weight: 500;
+        padding-bottom: 0.25rem;
+      }
 
-            p:nth-child(1) {
-                color: $textDefault;
-                font-size: 1.375rem;
-                font-weight: 500;
-                padding-bottom: 0.25rem;
-            }
-
-            p:nth-child(3),
-            p:nth-child(4) {
-                width: 25%;
-                max-width: 25rem;
-            }
-
-            &.playing {
-                color: red;
-                background: linear-gradient(90deg, #E6EDF2 -0.92%, #EDFAFA 100%);
-            }
-        }
+      p:nth-child(3), p:nth-child(4) {
+        width: 25%;
+        max-width: 25rem;
+      }
     }
+
+    li.track.playing {
+      background-color: red;
+      color: white;
+    }
+  }
 }
