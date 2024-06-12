@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "sass --watch /src/styles/styles.scss:styles.css",
-    "build": "webpack ./src/script.js"
+    "build": "webpack-dev-server",
+    "build:prod": "webpack"
   },
   "keywords": [],
   "author": "",
