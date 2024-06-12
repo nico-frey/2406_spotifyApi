@@ -1,6 +1,4 @@
-import { text } from "./test.js";
-
-console.log(text);
+import { gsapAnimations } from "./animations.js";
 
 const SPOTIFY_CLIENT_ID = "67b411e20d594f30bf7a8d3bbde54285";
 const SPOTIFY_CLIENT_SECRET = "161fc5e3df004b95af3ba8c62f3eaf54";
@@ -13,6 +11,10 @@ const container = document.querySelector('div[data-js="tracks"]');
 
 const playlistTitle = document.querySelector('h1[data-js="playlistName"]');
 const playlistAuthor = document.querySelector('h2[data-js="playlistAuthor"]');
+
+let currentAudio = null;
+let currentTrack = null;
+let currentLi = null;
 
 //Get playlist from Spotify
 
@@ -39,7 +41,7 @@ function fetchPlaylist(token, playlistId) {
       }
 
       if (playlistAuthor && data.owner && data.owner.display_name) {
-        playlistAuthor.textContent = `${data.owner.display_name}`;
+        playlistAuthor.textContent = `@${data.owner.display_name}`;
       }
 
       if (data.tracks && data.tracks.items) {
@@ -70,6 +72,7 @@ function addTracksToPage(items) {
   items.forEach((item) => {
     console.log("track: ", item.track);
     const li = document.createElement("li");
+    li.classList.add("track");
 
     // Get coverImage from Track obj
 
@@ -87,6 +90,9 @@ function addTracksToPage(items) {
 
     const albumName = item.track.album.name;
 
+    // Get preview URL from Track obj
+    const previewUrl = item.track.preview_url;
+
     // Add items to innerHTML
 
     li.innerHTML = `
@@ -94,14 +100,47 @@ function addTracksToPage(items) {
     <div class="trackInfo"> <p class="trackName">${item.track.name}</p>  
     <p class="artistName">${item.track.artists
       .map((artist) => artist.name)
-      .join(", ")}</p> </div>
+      .join(", ")}</p> </div> 
+
     <p class="trackDuration">${minutes}:${seconds < 10 ? "0" : ""}${seconds}</p>
     <p class="albumName">${albumName}</p>
   `;
 
+    li.addEventListener("click", () => {
+      if (currentTrack === previewUrl) {
+        if (currentAudio.paused) {
+          currentAudio.play();
+          li.classList.add("playing");
+        } else {
+          currentAudio.pause();
+          li.classList.remove("playing");
+        }
+      } else {
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+          if (currentLi) {
+            currentLi.classList.remove("playing");
+          }
+        }
+        if (previewUrl) {
+          currentAudio = new Audio(previewUrl);
+          currentAudio.play();
+          currentTrack = previewUrl;
+          currentLi = li;
+          li.classList.add("playing");
+        }
+      }
+    });
+
     ul.appendChild(li);
   });
   container.appendChild(ul);
+
+  //Animate Track elements
+  requestAnimationFrame(() => {
+    gsapAnimations();
+  });
 }
 
 function fetchAccessToken() {
@@ -130,3 +169,5 @@ function fetchAccessToken() {
 }
 
 fetchAccessToken();
+
+gsapAnimations();
