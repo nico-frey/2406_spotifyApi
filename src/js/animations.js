@@ -10,18 +10,18 @@ export function gsapAnimations() {
   });
 }
 
-export function playTrackAnimation(element) {
-  gsap.to(element, {
+export function playTrackAnimation(item) {
+  gsap.to(item, {
     backgroundColor: "red",
-    color: "#03191B",
-    duration: 0.5,
+    //color: "#03191B",
+    duration: 5,
   });
 }
 
-export function pauseTrackAnimation(element) {
-  gsap.to(element, {
-    backgroundColor: "#FAFCFC",
-    color: "#798E90",
-    duration: 0.5,
+export function unplayTrackAnimation(item) {
+  gsap.to(item, {
+    backgroundColor: "green",
+    //color: "#03191B",
+    duration: 5,
   });
 }
