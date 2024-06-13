@@ -1,4 +1,5 @@
 import { gsapAnimations } from "./animations.js";
+import { playTrackAnimation, pauseTrackAnimation } from "./animations.js";
 
 const SPOTIFY_CLIENT_ID = "67b411e20d594f30bf7a8d3bbde54285";
 const SPOTIFY_CLIENT_SECRET = "161fc5e3df004b95af3ba8c62f3eaf54";
@@ -110,17 +111,17 @@ function addTracksToPage(items) {
       if (currentTrack === previewUrl) {
         if (currentAudio.paused) {
           currentAudio.play();
-          li.classList.add("playing");
+          playTrackAnimation(li);
         } else {
           currentAudio.pause();
-          li.classList.remove("playing");
+          pauseTrackAnimation(li);
         }
       } else {
         if (currentAudio) {
           currentAudio.pause();
           currentAudio.currentTime = 0;
           if (currentLi) {
-            currentLi.classList.remove("playing");
+            pauseTrackAnimation(currentLi);
           }
         }
         if (previewUrl) {
@@ -128,7 +129,7 @@ function addTracksToPage(items) {
           currentAudio.play();
           currentTrack = previewUrl;
           currentLi = li;
-          li.classList.add("playing");
+          playTrackAnimation(li);
         }
       }
     });

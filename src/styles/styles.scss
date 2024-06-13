@@ -39,7 +39,7 @@ $radiusOuter: 1rem;
 }
 
 body {
-  background-color: $background;
+  background-color: $background !important;
 }
 
 #main {
@@ -113,8 +113,9 @@ body {
       }
     }
 
-    li.track.playing {
-      color: white;
+    .track.playing {
+      height: 200px;
+      background: linear-gradient(90deg, #e6edf2 -0.92%, #edfafa 100%);
     }
   }
 }

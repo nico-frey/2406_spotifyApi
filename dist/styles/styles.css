@@ -24,7 +24,7 @@
 }
 
 body {
-  background-color: #55ff00;
+  background-color: #fafcfc !important;
 }
 
 #main {
@@ -39,7 +39,7 @@ body {
 
 .playlistHeader {
   display: flex;
-  padding: 2rem 0rem;
+  padding: 2rem 0;
   justify-content: space-between;
   align-items: center;
 }
@@ -87,6 +87,10 @@ body {
 .tracklist ul li p:nth-child(4) {
   width: 25%;
   max-width: 25rem;
+}
+.tracklist ul .track.playing {
+  height: 200px;
+  background: linear-gradient(90deg, #e6edf2 -0.92%, #edfafa 100%);
 }
 
 /*# sourceMappingURL=styles.css.map */
