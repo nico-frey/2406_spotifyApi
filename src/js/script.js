@@ -81,18 +81,18 @@ function addTracksToPage(items) {
     li.addEventListener("click", () => {
       if (currentTrack === previewUrl) {
         if (currentAudio.paused) {
-          playTrackAnimation("li");
+          playTrackAnimation(li);
           currentAudio.play();
         } else {
           currentAudio.pause();
-          unplayTrackAnimation("li");
+          unplayTrackAnimation(li);
         }
       } else {
         if (currentAudio) {
           currentAudio.pause();
           currentAudio.currentTime = 0;
           if (currentLi) {
-            unplayTrackAnimation("li");
+            unplayTrackAnimation(li);
           }
         }
         if (previewUrl) {
@@ -100,7 +100,7 @@ function addTracksToPage(items) {
           currentAudio.play();
           currentTrack = previewUrl;
           currentLi = li;
-          playTrackAnimation("li");
+          playTrackAnimation(li);
         }
       }
     });
