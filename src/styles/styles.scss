@@ -1,11 +1,11 @@
 // Variables
-$font: 'Cabinet Grotesk Variable', sans-serif;
-$textDefault: #03191B;
-$textLighter: #3F5558;
-$testLightest: #798E90;
-$background: #FAFCFC;
-$borderDefault: #BBE0E4;
-$gradientLeft: #EEF3F7;
+$font: "Cabinet Grotesk Variable", sans-serif;
+$textDefault: #03191b;
+$textLighter: #3f5558;
+$testLightest: #798e90;
+$background: #fafcfc;
+$borderDefault: #bbe0e4;
+$gradientLeft: #eef3f7;
 $gradientRight: $background;
 $radiusInner: 0.5rem;
 $radiusOuter: 1rem;
@@ -81,7 +81,11 @@ body {
       cursor: pointer;
 
       &:hover {
-        background: linear-gradient(90deg, $gradientLeft -0.92%, $gradientRight 100%);
+        background: linear-gradient(
+          90deg,
+          $gradientLeft -0.92%,
+          $gradientRight 100%
+        );
       }
 
       img {
@@ -102,14 +106,14 @@ body {
         padding-bottom: 0.25rem;
       }
 
-      p:nth-child(3), p:nth-child(4) {
+      p:nth-child(3),
+      p:nth-child(4) {
         width: 25%;
         max-width: 25rem;
       }
     }
 
     li.track.playing {
-      background-color: red;
       color: white;
     }
   }

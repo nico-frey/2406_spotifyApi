@@ -1,5 +1,4 @@
 import { gsapAnimations } from "./animations.js";
-import "../styles/styles.scss";
 
 const SPOTIFY_CLIENT_ID = "67b411e20d594f30bf7a8d3bbde54285";
 const SPOTIFY_CLIENT_SECRET = "161fc5e3df004b95af3ba8c62f3eaf54";
