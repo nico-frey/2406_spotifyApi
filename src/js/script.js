@@ -1,8 +1,5 @@
-import {
-  gsapAnimations,
-  playTrackAnimation,
-  unplayTrackAnimation,
-} from "./animations.js";
+//import "remixicon/fonts/remixicon.css";
+import { gsapAnimations, toggleOn, toggleOff } from "./animations.js";
 
 const SPOTIFY_CLIENT_ID = "67b411e20d594f30bf7a8d3bbde54285";
 const SPOTIFY_CLIENT_SECRET = "161fc5e3df004b95af3ba8c62f3eaf54";
@@ -14,6 +11,7 @@ const playlistAuthor = document.querySelector('h2[data-js="playlistAuthor"]');
 let currentAudio = null;
 let currentTrack = null;
 let currentLi = null;
+let clickTimeout = null;
 
 function fetchPlaylist(token, playlistId) {
   fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
@@ -79,30 +77,34 @@ function addTracksToPage(items) {
     `;
 
     li.addEventListener("click", () => {
-      if (currentTrack === previewUrl) {
-        if (currentAudio.paused) {
-          playTrackAnimation(li);
-          currentAudio.play();
+      if (clickTimeout) clearTimeout(clickTimeout);
+      clickTimeout = setTimeout(() => {
+        if (currentTrack === previewUrl) {
+          if (currentAudio.paused) {
+            currentAudio.play();
+            toggleOn(li);
+          } else {
+            currentAudio.pause();
+            toggleOff(li);
+          }
         } else {
-          currentAudio.pause();
-          unplayTrackAnimation(li);
-        }
-      } else {
-        if (currentAudio) {
-          currentAudio.pause();
-          currentAudio.currentTime = 0;
-          if (currentLi) {
-            unplayTrackAnimation(li);
+          if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            if (currentLi) {
+              toggleOff(currentLi);
+            }
+          }
+
+          if (previewUrl) {
+            currentAudio = new Audio(previewUrl);
+            currentAudio.play();
+            currentTrack = previewUrl;
+            currentLi = li;
+            toggleOn(li);
           }
         }
-        if (previewUrl) {
-          currentAudio = new Audio(previewUrl);
-          currentAudio.play();
-          currentTrack = previewUrl;
-          currentLi = li;
-          playTrackAnimation(li);
-        }
-      }
+      }, 200); // Debounce timeout
     });
 
     ul.appendChild(li);
