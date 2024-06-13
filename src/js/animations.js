@@ -4,7 +4,9 @@ export function toggleOn(element) {
   const image = element.querySelector(".coverImage");
   const trackName = element.querySelector(".trackName");
   const artistName = element.querySelector(".artistName");
-  const currentTrack = element.querySelector(".track");
+  const trackInfo = element.querySelector(".trackInfo");
+  const track = element.querySelector(".li");
+  //const trackArtist = document.querySelector("p:nth-child(1)");
 
   gsap
     .timeline()
@@ -12,7 +14,7 @@ export function toggleOn(element) {
       duration: 0.5,
       backgroundColor: "#E6EDF2",
       ease: "power4.out",
-      padding: "2rem",
+      padding: "2.5rem",
     })
     .to(
       image,
@@ -21,31 +23,38 @@ export function toggleOn(element) {
         width: "10rem",
         duration: 0.5,
         scale: 1.1,
-        ease: "power2.out",
+        ease: "power4.out",
       },
       "<"
     )
     .to(
       trackName,
       {
-        fontSize: "2rem",
-        duration: 0.5,
+        fontSize: "2.5rem",
+        duration: 0.8,
         color: "#057882",
-        ease: "power2.out",
+        ease: "power4.out",
       },
       "<"
     )
     .to(
       artistName,
-      { duration: 0.5, color: "#057882", ease: "power2.out" },
+      {
+        duration: 0.8,
+        color: "#057882",
+        ease: "power4.out",
+        fontSize: "1.5rem",
+      },
       "<"
-    );
+    )
+    .to(trackInfo, { marginLeft: "3.5rem" }, "<");
 }
 
 export function toggleOff(element) {
   const image = element.querySelector(".coverImage");
   const trackName = element.querySelector(".trackName");
   const artistName = element.querySelector(".artistName");
+  const trackInfo = element.querySelector(".trackInfo");
 
   gsap
     .timeline()
@@ -62,7 +71,7 @@ export function toggleOff(element) {
         width: "4rem",
         duration: 0.5,
         scale: 1,
-        ease: "power2.out",
+        ease: "power4.out",
       },
       "<"
     )
@@ -72,13 +81,18 @@ export function toggleOff(element) {
         fontSize: "1.375rem",
         duration: 0.5,
         color: "#03191b",
-        ease: "power2.out",
+        ease: "power4.out",
       },
       "<"
     )
     .to(
       artistName,
-      { duration: 0.5, color: "#798e90", ease: "power2.out" },
+      {
+        duration: 0.5,
+        color: "#798e90",
+        ease: "powe4.out",
+        fontSize: "1.125rem",
+      },
       "<"
     );
 }
