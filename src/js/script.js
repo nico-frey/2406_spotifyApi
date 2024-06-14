@@ -104,7 +104,7 @@ function addTracksToPage(items) {
             toggleOn(li);
           }
         }
-      }, 200); // Debounce timeout
+      }, 200);
     });
 
     ul.appendChild(li);

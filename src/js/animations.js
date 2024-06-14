@@ -94,7 +94,8 @@ export function toggleOff(element) {
         fontSize: "1.125rem",
       },
       "<"
-    );
+    )
+    .to(trackInfo, { marginLeft: "1.5rem" }, "<");
 }
 
 export function gsapAnimations() {
